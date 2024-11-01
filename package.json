@@ -6,9 +6,10 @@
     "react": "16.14.0"
   },
   "scripts": {
-    "postinstall": "wix sync-types",
+    "postinstall": "npm run sync",
+    "sync": "npx wix sync-types",
     "open": "url=https://hanukkan.com; echo $url; echo $url | xargs open",
-    "dev": "wix dev",
+    "dev": "npx wix dev",
     "lint": "eslint ."
   }
 }

@@ -7,6 +7,7 @@
   },
   "scripts": {
     "postinstall": "wix sync-types",
+    "open": "url=https://hanukkan.com; echo $url; echo $url | xargs open",
     "dev": "wix dev",
     "lint": "eslint ."
   }

@@ -1,45 +1,58 @@
-# Git Integration & Wix CLI <img align="left" src="https://user-images.githubusercontent.com/89579857/185785022-cab37bf5-26be-4f11-85f0-1fac63c07d3b.png">
+# HANUKKAN
+This repository holds the source code for the [Hanukkan website](https://hanukkan.com)<br>
+Hanukkan is a social community project created to spread a little light in these difficult times, where once again, like the story of Hanukkah, many of us find ourselves hiding.<br>
+For more information about the project, visit the site.
 
-This repo is part of Git Integration & Wix CLI, a set of tools that allows you to write, test, and publish code for your Wix site locally on your computer. 
+## Development
+The code is maintained by [Dean Ayalon](@DeanAyalon)<br>
+For errors, feature requests, or questions, please [open an issue](https://github.com/DeanAyalon/wix-hanukkan/issues/new) or reach out to me [via email](mailto:dev@deanayalon.com).
 
-Connect your site to GitHub, develop in your favorite IDE, test your code in real time, and publish your site from the command line.
+This site is hosted on [Wix](https://wix.com) using the GitHub integration.<br>
+In order to contribute to the code, [fork the repository](https://github.com/DeanAyalon/wix-hanukkan/fork), commit your changes, and [create a pull request](https://github.com/DeanAyalon/wix-hanukkan/compare).
 
-## Set up this repository in your IDE
-This repo is connected to a Wix site. That site tracks this repo's default branch. Any code committed and pushed to that branch from your local IDE appears on the site.
+### CRITICALLY IMPORTANT!
+#### NEVER use the `wix publish` command!
+> It is also not recommended to use `wix preview`.
 
-Before getting started, make sure you have the following things installed:
-* [Git](https://git-scm.com/download)
-* [Node](https://nodejs.org/en/download/), version 14.8 or later.
-* [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [yarn](https://yarnpkg.com/getting-started/install)
-* An SSH key [added to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+Additionally, please make sure your `wix.config.json` file is updated with the latest UI version before performing a commit:
+- If you edited the UI in the local editor - It should be updated automatically.
+- If you did not, then [open the editor](#scripts), hover over the 'save' button, and match your config file with the version displayed.
 
-To set up your local environment and start coding locally, do the following:
+### Optional
+For optimal development experience, install the devDependencies.
 
-1. Open your terminal and navigate to where you want to store the repo.
-1. Clone the repo by running `git clone <your-repository-url>`.
-1. Navigate to the repo's directory by running `cd <directory-name>`.
-1. Install the repo's dependencies by running `npm install` or `yarn install`.
-1. Install the Wix CLI by running `npm install -g @wix/cli` or `yarn global add @wix/cli`.  
-   Once you've installed the CLI globally, you can use it with any Wix site's repo.
+You can do this using [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or a different Node package manager of your choice.
+```sh
+npm install -d
+```
 
-For more information, see [Setting up Git Integration & Wix CLI](https://support.wix.com/en/article/velo-setting-up-git-integration-wix-cli-beta).
+To synchronize types with the Wix API and site elements, you'll need to authenticate with your Wix account, which needs to have [Site Editor permissions](https://manage.wix.com/dashboard/b1125880-0a91-447e-9421-a800818949f5/roles-and-permissions).
+```sh
+npx wix login
+```
 
-## Write Velo code in your IDE
-Once your repo is set up, you can write code in it as you would in any other non-Wix project. The repo's file structure matches the [public](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#public), [backend](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#backend), and [page code](https://support.wix.com/en/article/velo-working-with-the-velo-sidebar#page-code) sections in Editor X.
+### Scripts
+To run a script, use `npm run <script-name>`
 
-Learn more about [this repo's file structure](https://support.wix.com/en/article/velo-understanding-your-sites-github-repository-beta).
+- **`sync`** - Syncs your `.wix` directory with the UI version specified in [wix.config.json](wix.config.json).
+- **`dev`** - Syncs the `.wix` types, and opens the Wix Studio editor with your local code.
+  > This stays running and automatically reloads the editor preview when code is updated locally. It also automatically syncs the types whenever the save button is pressed.
+- **`open`** - Opens the website in your browser.
 
-## Test your code with the Local Editor
-The Local Editor allows you test changes made to your site in real time. The code in your local IDE is synced with the Local Editor, so you can test your changes before committing them to your repo. You can also change the site design in the Local Editor and sync it with your IDE.
+### Typical Workflow
+Sync your development environment with the site:
+```sh
+git pull upstream main                  # Pull the latest version of the official repository
+npm run dev                             # Start the Local Editor
+```
+- If UI is edited, save changes
+- If UI is not edited, ensure `uiVersion` is up to date in wix.config.json
+```sh
+git commit -m "Modified x, fixed y"     # Commit your changes, please use a meaningful message
+git push                                # Push your changes to your fork
+```
+- [Open a pull request on GitHub](https://github.com/DeanAyalon/wix-hanukkan/compare)
 
-Start the Local Editor by navigating to this repo's directory in your terminal and running `wix dev`.
-
-For more information, see [Working with the Local Editor](https://support.wix.com/en/article/velo-working-with-the-local-editor-beta).
-
-## Preview and publish with the Wix CLI
-The Wix CLI is a tool that allows you to work with your site locally from your computer's terminal. You can use it to build a preview version of your site and publish it. You can also use the CLI to install [approved npm packages](https://support.wix.com/en/article/velo-working-with-npm-packages) to your site.
-
-Learn more about [working with the Wix CLI](https://support.wix.com/en/article/velo-working-with-the-wix-cli-beta).
-
-## Invite contributors to work with you
-Git Integration & Wix CLI extends Editor X's [concurrent editing](https://support.wix.com/en/article/editor-x-about-concurrent-editing) capabilities. Invite other developers as collaborators on your [site](https://support.wix.com/en/article/inviting-people-to-contribute-to-your-site) and your [GitHub repo](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository). Multiple developers can work on a site's code at once.
+## UI Changes
+For changes to the UI, none of this is necessary!<br>
+Simply update the site using the regular Wix Studio editor :)

@@ -1,6 +1,11 @@
-# dependencies
+# Node
 node_modules/
+package-lock.json
+
+# IDE
 .vscode/
 .idea/
+
+# Wix Types
 .wix/
 jsconfig.json

@@ -1,15 +1,37 @@
 {
-  "devDependencies": {
-    "@wix/cli": "^1.0.0",
-    "@wix/eslint-plugin-cli": "^1.0.0",
-    "eslint": "^8.25.0",
-    "react": "16.14.0"
-  },
-  "scripts": {
-    "postinstall": "npm run sync",
-    "sync": "npx wix sync-types",
-    "open": "url=https://hanukkan.com; echo $url; echo $url | xargs open",
-    "dev": "npx wix dev",
-    "lint": "eslint ."
-  }
+    "name": "hanukkan.com",
+    "version": "1.0.0",
+    "description": "The hanukkan.com website source code",
+    "author": {
+        "name": "Dean Ayalon",
+        "email": "dev@deanayalon.com",
+        "url": "https://github.com/deanayalon"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/deanayalon/wix-hanukkan"
+    },
+    "bugs": {
+        "email": "dev@deanayalon.com",
+        "url": "https://github.com/deanayalon/wix-hanukkan/issues"
+    },
+    "homepage": "https://hanukkan.com",
+
+    "scripts": {
+        "postinstall": "npm run sync",
+        "sync": "npx wix sync-types",
+        "open": "url=https://hanukkan.com; echo $url; echo $url | xargs open",
+        "dev": "npx wix dev",
+        "lint": "eslint ."
+    },
+
+    "devDependencies": {
+        "@wix/cli": "^1.0.0",
+        "@wix/eslint-plugin-cli": "^1.0.0",
+        "eslint": "^8.25.0",
+        "react": "16.14.0"
+    }    
 }

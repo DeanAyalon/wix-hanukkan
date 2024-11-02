@@ -2,13 +2,18 @@ import { multilingual } from "wix-window-frontend"
 
 // Handle LTR/RTL
 const rtl = multilingual.currentLanguage == 'he'
+let model, showModel, img
 if (rtl) {
     $w('#main').collapse()
     $w('#main-rtl').expand()
+    model = $w('#model-rtl')
+    showModel = $w('#showModel-rtl')
+    img = $w('#img-rtl')
+} else {
+    model = $w('#model')
+    showModel = $w('#showModel')
+    img = $w('#img')
 }
-const model = rtl ? $w('#model-rtl') : $w('#model'),
-    showModel = rtl ? $w('#showModel-rtl') : $w('#showModel'),
-    img = rtl ? $w('#img-rtl') : $w('#img')
 
 // Load model from CMS
 $w('#dynamicDataset').onReady(() => {

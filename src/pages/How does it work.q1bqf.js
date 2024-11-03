@@ -1,6 +1,2 @@
-import { multilingual } from "wix-window-frontend";
-
-if (multilingual.currentLanguage == 'he') {
-    $w('#components').collapse()
-    $w('#components-rtl').expand()
-}
+import { expand } from "public/rtl"
+expand('components')

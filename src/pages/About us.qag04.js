@@ -1,2 +1,2 @@
 import { expand } from "public/rtl"
-expand('about', 'thanks')
+expand('about', 'thanks', 'partners')

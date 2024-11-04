@@ -1,11 +1,11 @@
-import { multilingual } from "wix-window-frontend"
+import { expand } from "public/rtl"
 
-// Handle LTR/RTL
-const rtl = multilingual.currentLanguage == 'he'
+// Element selectors
 let model, showModel, img
+
+// Handle RTL
+const rtl = expand('main')
 if (rtl) {
-    $w('#main').collapse()
-    $w('#main-rtl').expand()
     model = $w('#model-rtl')
     showModel = $w('#showModel-rtl')
     img = $w('#img-rtl')

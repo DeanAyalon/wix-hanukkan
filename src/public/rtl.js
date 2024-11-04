@@ -2,16 +2,13 @@
 import { multilingual } from "wix-window-frontend";
 
 /** Expand RTL and collapse LTR versions of the given elements according to current language
- * @example `#tag` / `#tag-rtl`
  * 
- * @param elements `string[]` element tags (without '#' prefix)
- * 
- * @returns (boolean) true if expanded RTL elements
+ * @param {...string} elements Element tags (without '#' prefix)
+ * @returns {boolean} Site in RTL mode
  */
 export function expand(...elements) {
     if (multilingual.currentLanguage === 'he') {
         for (const element of elements) {
-            console.log('Expanding RTL', element);
             $w('#' + element).collapse()
             $w(`#${element}-rtl`).expand()
         }

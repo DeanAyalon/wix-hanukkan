@@ -9,3 +9,6 @@ package-lock.json
 # Wix Types
 .wix/
 jsconfig.json
+
+# MacOS
+.DS_Store

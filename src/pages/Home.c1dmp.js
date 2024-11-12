@@ -1,2 +1,2 @@
-import { expand } from "public/multilingual"
-expand('hero', 'aNewHope', 'bottom-menu')
+import { expand } from 'public/multilingual'
+expand('aNewHope', 'hero', 'bottom-menu')

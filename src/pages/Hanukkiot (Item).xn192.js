@@ -1,5 +1,6 @@
 import wixLocation from 'wix-location-frontend'
 
+import _w from 'public/selector'
 import $ml, * as ml from 'public/multilingual'
 
 // Handle layout direction
@@ -10,7 +11,7 @@ const model = $ml.html('#model'),
     img = $ml.image('#img')
 
 // Load model from CMS
-const dataset = $w('#dynamicDataset')
+const dataset = _w.dynamicDataset('#dynamicDataset')
 dataset.onReady(() => {
     const url = dataset.getCurrentItem().widgetUrl
     if (url) {

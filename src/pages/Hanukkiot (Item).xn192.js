@@ -1,22 +1,14 @@
 import wixLocation from 'wix-location-frontend'
 
 import { expand } from 'public/rtl'
+import _w from 'public/selector'
 
-// Handle RTL/LTR expansion
+// Handle layout direction
 const rtl = expand('main') ? '-rtl' : ''
-
-// Element selectors by writing direction
-/** Selects image element based on site language writing direction
- * @param {WixElementSelector} tag 
- * @returns {$w.Image}   */ // @ts-ignore
-const getImg = tag => $w((tag + rtl))
-
-/** @type {$w.HtmlComponent} */ // @ts-ignore
-const model = $w('#model' + rtl),
-
-/** @type {$w.VectorImage} */ // @ts-ignore
-    showModel = $w('#showModel' + rtl),
-    img = getImg('#img')
+// Element selectors
+const model = _w.html('#model' + rtl),
+    showModel = _w.vector('#showModel' + rtl),
+    img = _w.image('#img' + rtl)
 
 // Load model from CMS
 const dataset = $w('#dynamicDataset')
@@ -31,7 +23,7 @@ showModel.onClick(() => img.hide())
 
 // Share button URLs
 const pageUrl = wixLocation.url
-getImg('#share-fb').link = 'https://www.facebook.com/sharer.php?u=' + pageUrl
-getImg('#share-in').link = 'https://www.linkedin.com/shareArticle?url=' + pageUrl
-getImg('#share-wa').link = 'https://api.whatsapp.com/send?text=' + pageUrl
-getImg('#share-x').link = 'https://x.com/intent/tweet?url=' + pageUrl
+_w.image('#share-fb' + rtl).link = 'https://www.facebook.com/sharer.php?u=' + pageUrl
+_w.image('#share-in' + rtl).link = 'https://www.linkedin.com/shareArticle?url=' + pageUrl
+_w.image('#share-wa' + rtl).link = 'https://api.whatsapp.com/send?text=' + pageUrl
+_w.image('#share-x' + rtl).link = 'https://x.com/intent/tweet?url=' + pageUrl

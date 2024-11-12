@@ -7,6 +7,11 @@
  * - Allows any string (For calculations and multi-tag selection)
  * - Fixes some @wix/cli type generations */
 export default {
+    /** Selects a collapsable element
+     * @param {string} tag 
+     * @returns {$w.CollapsedMixin} */
+    collapsable: tag => $w(tag),
+
     /** Selects an Image element
      * @param {string} tag 
      * @returns {$w.Image} */

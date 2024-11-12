@@ -1,14 +1,13 @@
 import wixLocation from 'wix-location-frontend'
 
-import { expand } from 'public/rtl'
-import _w from 'public/selector'
+import $ml, * as ml from 'public/multilingual'
 
 // Handle layout direction
-const rtl = expand('main') ? '-rtl' : ''
+ml.expand('main')
 // Element selectors
-const model = _w.html('#model' + rtl),
-    showModel = _w.vector('#showModel' + rtl),
-    img = _w.image('#img' + rtl)
+const model = $ml.html('#model'),
+    showModel = $ml.vector('#showModel'),
+    img = $ml.image('#img')
 
 // Load model from CMS
 const dataset = $w('#dynamicDataset')
@@ -23,7 +22,7 @@ showModel.onClick(() => img.hide())
 
 // Share button URLs
 const pageUrl = wixLocation.url
-_w.image('#share-fb' + rtl).link = 'https://www.facebook.com/sharer.php?u=' + pageUrl
-_w.image('#share-in' + rtl).link = 'https://www.linkedin.com/shareArticle?url=' + pageUrl
-_w.image('#share-wa' + rtl).link = 'https://api.whatsapp.com/send?text=' + pageUrl
-_w.image('#share-x' + rtl).link = 'https://x.com/intent/tweet?url=' + pageUrl
+$ml.image('#share-fb').link = 'https://www.facebook.com/sharer.php?u=' + pageUrl
+$ml.image('#share-in').link = 'https://www.linkedin.com/shareArticle?url=' + pageUrl
+$ml.image('#share-wa').link = 'https://api.whatsapp.com/send?text=' + pageUrl
+$ml.image('#share-x').link = 'https://x.com/intent/tweet?url=' + pageUrl

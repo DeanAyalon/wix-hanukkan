@@ -5,31 +5,24 @@
 
 /** Alternate $w selector, each property selects predefined element types: 
  * - Allows any string (For calculations and multi-tag selection)
- * - Fixes some @wix/cli type generations */
+ * - Fixes some @wix/cli type generations 
+ *  @type {{ [prop: string]: (tag: string) => any }}
+ * */
 export default {
-    /** Selects a collapsable element
-     * @param {string} tag 
-     * @returns {$w.CollapsedMixin} */
+    /** @returns {$w.CollapsedMixin} */    
     collapsable: tag => $w(tag),
 
-    /** Selects an Image element
-     * @param {string} tag 
-     * @returns {$w.Image} */
+    /** @returns {$w.Image} */
     image: tag => $w(tag),
     
-    /** Selects a vector image element
-     * @param {string} tag 
-     * @returns {$w.VectorImage} */
+    /** @returns {$w.VectorImage} */
     vector: tag => $w(tag),
 
-    /** Selects an HtmlComponent element
-     * @param {string} tag 
-     * @returns {$w.HtmlComponent} */
+    /** @returns {$w.HtmlComponent} */
     html: tag => $w(tag),
 
     /** Selects a DynamicDataset 
      * @fixes Wix CLI incorrectly returns $w.AppController
-     * @param {string} tag 
      * @returns {$w.router_dataset} wixData.dynamicDataset */
     dynamicDataset: tag => $w(tag),
 }

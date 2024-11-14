@@ -34,6 +34,17 @@ export default {
      * @returns {$w.HtmlComponent} */
     html: tag => select(tag, '$w.HtmlComponent'),
 
+    /** Selects a Repeater element
+     * @param {string} tag 
+     * @returns {$w.Repeater} */
+    repeater: tag => select(tag, '$w.Repeater'),
+
+    /** Selects a Dataset 
+     * @fixes Wix CLI incorrectly returns $w.AppController
+     * @param {string} tag 
+     * @returns {$w.dataset} wixData.dataset */
+    dataset: tag => select(tag, 'dataset'),
+
     /** Selects a DynamicDataset 
      * @fixes Wix CLI incorrectly returns $w.AppController
      * @param {string} tag 

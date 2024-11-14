@@ -8,6 +8,10 @@ This script gives control over rendering of elements according to site language 
 - Different layout orientations - Design your elements to fir the language, for example, have your logo appear on the right for RTL languages
 
 ## Usage
+There are two files in this module: `typed.js` and `native.js`.
+The typed file depends on the [selector](../selector/readme.md) module, and uses `_w` for selection with better type support.
+The native version uses the `$w` selector and does not require additional modules.
+
 ### Expand
 For each element that cannot be translated properly using the native Wix Multilingual support:
 - Create LTR and RTL versions tagged: `#element` and `#element-rtl`
@@ -16,7 +20,7 @@ The function will expand the correct tag depending on the site langauge
 
 Example:
 ```js
-import { expand } from 'public/multilingual'
+import { expand } from 'public/multilingual' // OR 'public/multilingual/native'
 expand('multilingualSection', 'anotherMultilingualSection', 'multilingualElement')
 // If the site is in LTR mode, these elements will be expanded:
     // #multilingualSection, #anotherMultilingualSection, #multilingualElement
@@ -27,14 +31,13 @@ expand('multilingualSection', 'anotherMultilingualSection', 'multilingualElement
 
 ### Selector
 The selector function allows you to select the correct element depending on the site langauge<bt>
-This function uses _w from the [selector](../selector/readme.md) module, for better type support, but has a counterpart using native `$w` instead
 
 ```js
 import $ml from 'public/multilingual'
-$ml('#someImage').src = ...             // Uses native $w (tag: WixElementSelector)
+$ml.image('#someImage').src = ...       // Uses _w.image (tag: string)
 // OR
-import _ml from 'public/multilingual'
-_ml.image('#someImage').src = ...       // Uses _w.image (tag: string)
+import $ml from 'public/multilingual/native'
+$ml('#someImage').src = ...             // Uses native $w (tag: WixElementSelector)
 
 // Returns the element #someImage or #someImage-rtl depending on the site langauge
 ```

@@ -1,2 +1,2 @@
-import { expand } from 'public/multilingual'
+import { expand } from 'public/tools/multilingual'
 expand('components')

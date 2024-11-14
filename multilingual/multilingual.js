@@ -1,7 +1,7 @@
 // Handles RTL support
 import { multilingual } from 'wix-window-frontend'
 
-import _w from './selector'
+import _w from '../selector/selector'
 
 export const rtl = multilingual.currentLanguage === 'he'    // Is the site in RTL mode
 const rtlExtension = '-rtl',                                // Tag extension for RTL elements

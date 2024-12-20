@@ -9,6 +9,11 @@ function select(tag, expectedType) {
 const checkType = (element, expectedType) =>
     element.type !== expectedType && console.error(`${element.id} is not a ${expectedType}`)
 
+/** Converts a given string's type to WixElementSelector
+ * @param {string} tag 
+ * @returns {WixElementSelector} */
+export function selector(tag) { return /** @type {WixElementSelector} */ (tag) }
+
 /** Alternate $w selector, each property selects predefined element types: 
  * - Allows any string (For calculations and multi-tag selection)
  * - Fixes some @wix/cli type generations */
@@ -17,7 +22,7 @@ export default {
      * @param {string} tag 
      * @returns {$w.CollapsedMixin} 
      * @warn Does not check whethwer the returned elements are indeed collapsible */
-    collapsable: tag => $w(tag),
+    collapsable: tag => $w(selector(tag)),
 
     /** Selects an Image element
      * @param {string} tag 
@@ -50,4 +55,9 @@ export default {
      * @param {string} tag 
      * @returns {$w.router_dataset} wixData.dynamicDataset */
     dynamicDataset: tag => select(tag, 'router_dataset'),
+
+    /** Selects a Text element
+     * @param {string} tag
+     * @returns {$w.Text} */
+    text: tag => select(tag, '$w.Text'),
 }

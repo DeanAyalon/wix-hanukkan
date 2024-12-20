@@ -11,9 +11,17 @@ const rtlExtension = '-rtl',                                // Tag extension for
 /** Multilingual selector, works like _w
  * adds '-rtl' to the element tag if site language is written in RTL */
 export default {
+    /** @param {string} tag */
     image: tag => _w.image(tag + ext),
+    
+    /** @param {string} tag */
     vector: tag => _w.vector(tag + ext),
+    
+    /** @param {string} tag */
     html: tag => _w.html(tag + ext),
+    
+    /** @param {string} tag */
+    text: tag => _w.text(tag + ext),
 }
 
 /** Expand specified multilingual elements according to layout direction

@@ -1,2 +1,2 @@
 import { expand } from 'public/tools/multilingual'
-expand('aNewHope', 'hero', 'bottom-menu')
+expand('hero', 'aNewHope', 'bottom-menu')

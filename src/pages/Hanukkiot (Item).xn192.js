@@ -1,10 +1,11 @@
 import wixLocation from 'wix-location-frontend'
 import { getJSON } from 'wix-fetch'
 
-import { praise } from 'backend/praise.web.js'
+import { praise } from 'backend/praise.jsw'
 
 import { _w } from 'public/tools'
 import { $ml, ml } from 'public/tools'
+
 /** @typedef { import('public/collections').Hanukkia } Hanukkia */
 
 // Handle layout direction
@@ -41,17 +42,22 @@ dataset.onReady(async () => {
     } else model.hide()
 
     // Praise
-    const praiseBtn = $ml.vector('#praise')
+    const praiseBtn = $ml.vector('#praise'),
+    praiseText = $ml.text('#praiseCount')
+    praiseText.text = item.praise ? item.praise.toString() : '0'
+    praiseText.show()
+
     let cooldown = false
     praiseBtn.onClick(async () => {
         if (cooldown) return;
         cooldown = true
         const praiseCount = await praise(item._id)
         cooldown = false
-        $ml.text('#praiseCount').text = praiseCount
+        praiseText.text = praiseCount.toString()
     })
 })
 showModel.onClick(() => img.hide())
+img.onClick(() => img.hide())
 
 // Share button URLs
 const pageUrl = wixLocation.url

@@ -1,8 +1,12 @@
 import wixLocation from 'wix-location-frontend'
 import { getJSON } from 'wix-fetch'
 
-import {_w} from 'public/tools'
-import {$ml, ml} from 'public/tools'
+import { praise } from 'backend/praise.jsw'
+
+import { _w } from 'public/tools'
+import { $ml, ml } from 'public/tools'
+
+/** @typedef { import('public/collections').Hanukkia } Hanukkia */
 
 // Handle layout direction
 ml.expand('main')
@@ -11,10 +15,13 @@ const model = $ml.html('#model'),
     showModel = $ml.vector('#showModel'),
     img = $ml.image('#img')
 
-// Load model from CMS
+// Get data from CMS
 const dataset = _w.dynamicDataset('#dynamicDataset')
+/** @type { Hanukkia } */ let item
 dataset.onReady(async () => {
-    let url = dataset.getCurrentItem().widgetUrl
+    item = dataset.getCurrentItem()
+    // Load Model
+    let url = item.widgetUrl
     if (url) {
         // Get current day of Hanukkah
         const date = new Date().toISOString().split('T')[0]
@@ -33,8 +40,24 @@ dataset.onReady(async () => {
         model.src = url
         showModel.show()
     } else model.hide()
+
+    // Praise
+    const praiseBtn = $ml.vector('#praise'),
+    praiseText = $ml.text('#praiseCount')
+    praiseText.text = item.praise ? item.praise.toString() : '0'
+    praiseText.show()
+
+    let cooldown = false
+    praiseBtn.onClick(async () => {
+        if (cooldown) return;
+        cooldown = true
+        const praiseCount = await praise(item._id)
+        cooldown = false
+        praiseText.text = praiseCount.toString()
+    })
 })
 showModel.onClick(() => img.hide())
+img.onClick(() => img.hide())
 
 // Share button URLs
 const pageUrl = wixLocation.url

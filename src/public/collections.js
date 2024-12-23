@@ -1,5 +1,10 @@
-export default { hanukkiot: 'Import800' }
+export default { 
+    hanukkiot: 'Import800',
+    hanukkiotData: 'HanukkiotData'
+}
 
-/** @typedef {{ _id: string, widgetUrl: string, praise: number }} Hanukkia */
-/** @type {Hanukkia} */
-export const _hanukkia = { _id: '', widgetUrl: '', praise: 0 }
+/** @typedef {{ _id: string, widgetUrl: string }} Hanukkia */
+export let /** @type {Hanukkia} */ _hanukkia
+
+/** @typedef {{ _id: string, hanukkia: string, praise: number }} HanukkiaData */
+export let /** @type {HanukkiaData} */ _hanukkiaData
